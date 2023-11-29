@@ -16,7 +16,7 @@ app.use(session({
     secret:'baimai789#@',
     resave:true,
     saveUninitialized:true,
-    cookie:{secure:false,maxAge: 600*600*1000}
+    cookie:{secure:true,maxAge: 600*600*1000}
 }))
 
 app.use((req,res,next)=>{
