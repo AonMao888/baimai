@@ -36,6 +36,8 @@ const checkuser = (req,res,next) =>{
 app.get('/css/home.css',(req,res)=>{res.sendFile(__dirname+'/assets/css/home.css')})
 app.get('/css/login.css',(req,res)=>{res.sendFile(__dirname+'/assets/css/login.css')})
 app.get('/css/signup.css',(req,res)=>{res.sendFile(__dirname+'/assets/css/signup.css')})
+app.get('/font/jojar.ttf',(req,res)=>{res.sendFile(__dirname+'/assets/font/jojar.ttf')})
+app.get('/page/needverify.html',(req,res)=>{res.sendFile(__dirname+'/page/needverify.html')})
 
 //listen home page(main page)
 app.get('/',checkuser,async(req,res)=>{
@@ -102,7 +104,7 @@ app.post('/signup',async(req,res)=>{
     if(data){
         req.session.user = data;
         req.session.authenticated = true;
-        res.sendFile(__dirname+'/page/needverify.html');
+        res.redirect('../../page/needverify.html');
 
     }
 })
@@ -115,7 +117,6 @@ app.post('/login',async(req,res)=>{
         req.session.user = data;
         req.session.authenticated = true;
         res.redirect('../../');
-
     }
 })
 
