@@ -16,7 +16,7 @@ app.use(session({
     secret:'baimai789#@',
     resave:true,
     saveUninitialized:true,
-    cookie:{secure:true,maxAge: 600*600*1000}
+    cookie:{secure:false,maxAge: 600*600*1000}
 }))
 
 app.use((req,res,next)=>{
@@ -44,6 +44,8 @@ app.get('/',checkuser,async(req,res)=>{
     }
     const {data:posts,error} = await supabase.from('post').select('*');
     res.render('main',{
+        title:"BaiMai ပၢႆးမႂ်ႇ",
+        des:"Create, upload and share your memories to the world with BaiMai(ပၢႆးမႂ်ႇ)",
         component:"../component/allpost.ejs",
         css: './css/home.css',
         data:posts
@@ -55,6 +57,8 @@ app.get('/post',async(req,res)=>{res.redirect('./')})
 app.get('/post/:id',async(req,res)=>{
     const {data,error} = await supabase.from('post').select().eq('id',req.params.id);
     res.render('main',{
+        title:"Post | BaiMai ပၢႆးမႂ်ႇ",
+        des:"What post have today..",
         component:"../component/viewpost.ejs",
         css:"../../css/home.css",
         data:data
@@ -119,6 +123,8 @@ app.get('/settings',async(req,res)=>{
         res.redirect('/auth/login');
     }else{
         res.render('main',{
+            title:"Settings | BaiMai ပၢႆးမႂ်ႇ",
+            des:"Settings for site and account.",
             component:"../component/setting.ejs",
             css:"../css/home.css",
             data:data
