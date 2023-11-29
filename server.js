@@ -32,6 +32,11 @@ const checkuser = (req,res,next) =>{
     next();
 }
 
+//listen css file
+app.get('/css/home.css',(req,res)=>{res.sendFile(__dirname+'/assets/css/home.css')})
+app.get('/css/login.css',(req,res)=>{res.sendFile(__dirname+'/assets/css/login.css')})
+app.get('/css/signup.css',(req,res)=>{res.sendFile(__dirname+'/assets/css/signup.css')})
+
 //listen home page(main page)
 app.get('/',checkuser,async(req,res)=>{
     const { data: { user }} = await supabase.auth.getUser();
@@ -47,7 +52,6 @@ app.get('/',checkuser,async(req,res)=>{
         title:"BaiMai ပၢႆးမႂ်ႇ",
         des:"Create, upload and share your memories to the world with BaiMai(ပၢႆးမႂ်ႇ)",
         component:"../component/allpost.ejs",
-        css: './css/home.css',
         data:posts
     })
 })
@@ -60,7 +64,6 @@ app.get('/post/:id',async(req,res)=>{
         title:"Post | BaiMai ပၢႆးမႂ်ႇ",
         des:"What post have today..",
         component:"../component/viewpost.ejs",
-        css:"../../css/home.css",
         data:data
     })
 })
@@ -126,7 +129,6 @@ app.get('/settings',async(req,res)=>{
             title:"Settings | BaiMai ပၢႆးမႂ်ႇ",
             des:"Settings for site and account.",
             component:"../component/setting.ejs",
-            css:"../css/home.css",
             data:data
         })
         console.log(data)
