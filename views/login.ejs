@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login BaiMai</title>
+    <link rel="shortcut icon" href="../../img/logo.png" type="image/x-icon">
+    <meta name="description" content="Login and getting started to make your days">
+    <link rel="stylesheet" href="../../css/login.css">
+</head>
+<body>
+    <div class="box">
+        <div class="front">
+            <div class="title">
+                <h1>ပၢႆးမႂ်ႇ <span>BaiMai</span></h1>
+                <p>Platform to Create, Post and Share your memories to the world</p>
+            </div>
+            <p class="via">Download app via</p>
+            <div class="btn">
+                <a href=""><ion-icon name="logo-android"></ion-icon><p>Android</p></a>
+                <a href=""><ion-icon name="desktop-outline"></ion-icon><p>Desktop</p></a>
+            </div>
+        </div>
+        <form action="../login" method="post" class="signup">
+            <h1>Login<span>ပၢႆးမႂ်ႇ BaiMai</span></h1>
+            <p>Login and getting started to make your days</p>
+            <label for="semail">Email</label>
+            <input required type="email" id="semail" placeholder="..@gmail.com" name="email">
+            <label for="spass">Password</label>
+            <input required type="password" id="spass" placeholder="abc123" name="pass">
+            <button type="submit">Login</button>
+            <a href="" class="forget">Forget passowrd?</a>
+            <hr>
+            <p class="new">New user? <a href="signup">create account</a></p>
+        </form>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

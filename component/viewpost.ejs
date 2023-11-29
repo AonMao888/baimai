@@ -1,0 +1,30 @@
+<div class="view">
+    <div class="post">
+        <div class="nav">
+            <a href="" class="posterimg"><img src="<%=data[0].poster_img%>" alt=""></a>
+            <div class="name">
+                <a href=""><h2><%=data[0].poster_name%></h2></a>
+                <p title="This post is upload at ..."><ion-icon name="stopwatch-outline"></ion-icon> <%=data[0].date%></p>
+            </div>
+        </div>
+        <p class="text"><%=data[0].des%></p>
+        <div class="v">
+            <%if(data[0].view.length > 1){%>
+                <span><%=data[0].view.length%> views</span>
+            <%}else{%>
+                <span><%=data[0].view.length%> view</span>
+            <%}%>
+        </div>
+        <hr>
+        <div class="btn">
+            <button class="liked"><ion-icon name="heart-outline"></ion-icon><p>(<span><%=data[0].like.length%></span>)Like</p></button>
+            <button><ion-icon name="qr-code-outline"></ion-icon><p>QR Code</p></button>
+            <button><ion-icon name="share-social-outline"></ion-icon><p>Share</p></button>
+        </div>
+        <div class="imglist">
+            <%data[0].img.forEach((img)=>{%>
+                <img src="<%=img.link%>" alt="">
+            <%})%>
+        </div>
+    </div>
+</div>

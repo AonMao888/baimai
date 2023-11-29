@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up BaiMai</title>
+    <link rel="shortcut icon" href="../../img/logo.png" type="image/x-icon">
+    <meta name="description" content="Create ပၢႆးမႂ်ႇ BaiMai account and start make your days">
+    <link rel="stylesheet" href="../../css/signup.css">
+</head>
+<body>
+    <div class="start">
+        <h1>Create account</h1>
+        <p>Continue to create <b>ပၢႆးမႂ်ႇ BaiMai</b> account and start make your days</p>
+        <div class="space"></div>
+        <button onclick="start()" title="Click to continue">Start</button>
+        <p>Already have account, <a href="login">Login</a></p>
+    </div>
+    <div class="namediv div">
+        <h1>Full name</h1>
+        <p>Enter your full name to set as account name.</p>
+        <input type="text" title="Set account name" placeholder="Full name" class="uname">
+        <button onclick="inname()">Next</button>
+    </div>
+    <div class="birthdiv div">
+        <h1>Birth date</h1>
+        <p>Enter or select your birth date and continue.</p>
+        <div class="l">
+            <input type="date" class="ubirth" title="Set birth date">
+            <button onclick="inbirth()">Next</button>
+        </div>
+        <a href="javascript:backtoname()"><ion-icon name="chevron-back-outline"></ion-icon>Back</a>
+    </div>
+    <div class="genderdiv div">
+        <h1>Gender</h1>
+        <p>Select your gender from the select box below.</p>
+        <div class="l">
+            <select class="gender" title="Select gender">
+                <option value="gender">Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="none">None</option>
+                <option value="not">Not to prefer</option>
+            </select>
+            <button onclick="ingender()">Next</button>
+        </div>
+        <a href="javascript:backtobirth()"><ion-icon name="chevron-back-outline"></ion-icon>Back</a>
+    </div>
+    <div class="emaildiv div">
+        <h1>Set Email</h1>
+        <p>Enter email to create account. This email will set as your account email and we'll sent <b>verify link</b> to it.</p>
+        <input type="email" title="Enter email" placeholder="..@gmail.com" class="uemail">
+        <button onclick="inemail()">Next</button>
+        <a href="javascript:backtogender()"><ion-icon name="chevron-back-outline"></ion-icon>Back</a>
+    </div>
+    <div class="passdiv div">
+        <h1>Set Password</h1>
+        <p>Set account password with minimum(5 words). Retype it twice with in <b>confirm box</b>.</p>
+        <input type="password" title="Set password" placeholder="password(eg..abc123)" class="upass">
+        <input type="password" title="Retype confirm password" placeholder="confirm passowrd" class="conpass">
+        <button onclick="inpass()">Create</button>
+        <a href="javascript:backtoemail()"><ion-icon name="chevron-back-outline"></ion-icon>Back</a>
+    </div>
+    <form action="../signup" method="post" style="display: none;">
+        <input type="text" name="name" class="fname">
+        <input type="text" name="birth" class="fbirth">
+        <input type="text" name="gender" class="fgender">
+        <input type="text" name="email" class="femail">
+        <input type="text" name="pass" class="fpass">
+        <button type="submit" class="fbtn"></button>
+    </form>
+    <div class="toastdiv"></div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../../js/signup.js"></script>
+</body>
+</html>

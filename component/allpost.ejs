@@ -1,0 +1,26 @@
+<div class="list">
+    <% data.forEach((item)=>{%>
+            <div class="item">
+                <%- include('../component/homepostimg.ejs',{list:item.img}) -%>
+                <div class="content">
+                    <a href="" class="poster">
+                        <img src="<%=item.poster_img%>" alt="">
+                        <div class="name">
+                            <h2><%=item.poster_name%></h2>
+                            <p><ion-icon name="stopwatch-outline"></ion-icon> <%=item.date%></p>
+                        </div>
+                    </a>
+                    <div class="des">
+                        <p class=""><%=item.des%></p>
+                        <a href="post/<%=item.id%>">Read more</a>
+                    </div>
+                    <hr>
+                    <div class="btn">
+                        <button class="liked"><ion-icon name="heart-outline"></ion-icon><p>(<span><%=item.like.length%></span>)Like</p></button>
+                        <button><ion-icon name="qr-code-outline"></ion-icon><p>QR Code</p></button>
+                        <button><ion-icon name="share-social-outline"></ion-icon><p>Share</p></button>
+                    </div>
+                </div>
+            </div>
+        <%})%>
+</div>

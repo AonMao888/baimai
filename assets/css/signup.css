@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@200&family=Quicksand&display=swap');
+@font-face{
+    src: url('../font/jojar.ttf');
+    font-family: jojar;
+}
+body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(rgba(255, 217, 0, 0.349),white);
+}
+.start{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    border-radius: 15px;
+}
+.start h1{
+    margin: 5px;
+    font-size: 42px;
+    color: royalblue;
+}
+.start p{
+    font-size: 17px;
+    color: #333;
+    margin: 5px 9px;
+    text-align: center;
+}
+.start p b{
+    font-family: jojar;
+}
+.start p a{color: royalblue;}
+.space{
+    height: 15vh;
+}
+.start button{
+    text-decoration: none;
+    background: linear-gradient(42deg,lime,rgb(21, 224, 160));
+    font-size: 18px;
+    padding: 14px;
+    color: white;
+    outline: none;border: none;
+    cursor: pointer;
+    border-radius: 36px;
+    width: 36%;
+    text-align: center;
+    transition: 0.3s;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+}
+.start button:hover{
+    box-shadow: 1px 2px 12px rgba(0, 0, 0, 0.242);
+}
+.div{
+    display: flex;
+    flex-direction: column;
+    width: 515px;
+    min-height: 50vh;
+    display: none;
+}
+.div h1{
+    font-size: 36px;
+    color: royalblue;
+    margin: 5px 9px;
+}
+.div p{
+    margin: 5px;
+    font-size: 17px;
+    color: #333;
+    margin-left: 9px;
+}
+.div input{
+    font-size: 18px;
+    padding: 8px 10px;
+    margin: 0 9px;
+    background: white;
+    color: #333;
+    border: 2px solid #3333339d;
+    border-radius: 4px;
+    outline: 1px solid #333333be;
+    outline-offset: 2px;
+    margin-bottom: 9px;
+    font-family: jojar;
+}
+.div input:focus{
+    outline-color: royalblue;
+    border-color: royalblue;
+}
+.div button{
+    width: 36%;
+    margin: 9px;
+    padding: 12px;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    background: royalblue;
+    color: white;
+    outline: none;border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1);
+    user-select: none;
+}
+.div button:hover{
+    background: rgb(65, 73, 225);
+}
+.div button:active{
+    transform: scale(0.91);
+}
+.birthdiv input{
+    width: 42%;
+    padding: 9px;
+    cursor: pointer;
+    font-size: 16px;
+    background: white;
+    border-radius: 4px;
+    color: #333;
+    margin: 0;
+    margin-left: 9px;
+    outline: none;
+    border: 1px solid #e3e3e3;
+}
+.l{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.l select{
+    margin-left: 9px;
+    background: white;
+    padding: 9px 10px;
+    color: #333;
+    font-size: 17px;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    width: 36%;
+    cursor: pointer;
+    outline: 1px solid transparent;
+}
+.div a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 5px;
+    color: royalblue;
+    font-size: 17px;
+    padding: 7px;
+    transition: 0.2s;
+    width: max-content;
+}
+.div a:hover{color: red;}
+.div a ion-icon{margin-right: 2px;}
+.toastdiv{
+    position: fixed;
+    left: -10vh;
+    bottom: -10vh;
+    font-size: 17px;
+    border-radius: 14px;
+    transition: 0.4s;
+    color: white;
+    background: dimgray;
+    margin: 19px;
+    padding: 12px 19px;
+}
+
+@media(max-width:543px){
+    .start{width: 89%;}
+    .start h1{font-size: 29px;}
+    .start p{font-size: 15px;margin: 5px 15px;}
+    .start button{font-size: 15px;padding: 11px;}
+    .div{width: 95%;}
+    .div h1{font-size: 24px;}
+    .div p{font-size: 16px;}
+    .div input{font-size: 16px;}
+    .div button{font-size: 15px;padding: 10px;}
+    .birthdiv input{font-size: 15px;}
+}
