@@ -2,6 +2,7 @@ const express = require('express');
 const {createClient} = require('@supabase/supabase-js');
 const session = require('express-session');
 const ejs = require('ejs');
+const whois = require('whois-json');
 const app = express();
 const url = 'https://jeefhhpmoiofftuddara.supabase.co';
 const key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImplZWZoaHBtb2lvZmZ0dWRkYXJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDExODEzNDUsImV4cCI6MjAxNjc1NzM0NX0.yA4mqg37Xp-JGg5_Vsg5QLbXmSdlCcH9yElFX9yhfKc';
@@ -16,7 +17,7 @@ app.use(session({
     secret:'baimai789#@',
     resave:true,
     saveUninitialized:true,
-    cookie:{secure:true,maxAge: 600*600*1000}
+    cookie:{secure:false,maxAge: 600*600*1000}
 }))
 
 app.use((req,res,next)=>{
@@ -38,6 +39,7 @@ app.get('/css/home.css',(req,res)=>{res.sendFile(__dirname+'/assets/css/home.css
 app.get('/css/login.css',(req,res)=>{res.sendFile(__dirname+'/assets/css/login.css')})
 app.get('/css/signup.css',(req,res)=>{res.sendFile(__dirname+'/assets/css/signup.css')})
 app.get('/font/jojar.ttf',(req,res)=>{res.sendFile(__dirname+'/assets/font/jojar.ttf')})
+app.get('/js/signup.js',(req,res)=>{res.sendFile(__dirname+'/assets/js/signup.js')})
 app.get('/page/needverify.html',(req,res)=>{res.sendFile(__dirname+'/page/needverify.html')})
 
 //listen home page(main page)
@@ -74,7 +76,7 @@ app.get('/auth/signup',async(req,res)=>{
     if(user == null){
         
     }else{
-        res.redirect('../../')
+        res.redirect('https://baimai.vercel.app')
     }
     res.render('signup')
     console.log(user)
@@ -103,7 +105,7 @@ app.post('/auth/signup',async(req,res)=>{
     if(data){
         req.session.user = data;
         req.session.authenticated = true;
-        res.redirect('../../page/needverify.html');
+        res.redirect(req.query.next);
 
     }
 })
@@ -115,7 +117,7 @@ app.post('/auth/login',async(req,res)=>{
     if(data){
         req.session.user = data;
         req.session.authenticated = true;
-        res.redirect('../../');
+        res.redirect(req.query.next);
     }
 })
 
@@ -133,6 +135,12 @@ app.get('/settings',async(req,res)=>{
         })
         console.log(data)
     }
+})
+
+app.get('/logout',async(req,res)=>{
+    const {error} = await supabase.auth.signOut();
+    req.session.destroy();
+    res.json({status:'success'});
 })
 
 app.listen(80,()=>console.log('server started with port 80'))

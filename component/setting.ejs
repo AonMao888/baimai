@@ -40,6 +40,8 @@
             <a href=""><ion-icon name="time-outline"></ion-icon><p>Logined history</p></a>
             <a href=""><ion-icon name="ribbon-outline"></ion-icon><p>Account status</p></a>
             <a href=""><ion-icon name="download-outline"></ion-icon><p>Download my data</p></a>
+            <hr>
+            <button class="logoutbtn" onclick="logout()"><ion-icon name="trash-outline"></ion-icon><p style="color: red;">Logout</p></button>
         </div>
     </div>
 </div>
@@ -63,5 +65,17 @@
         toaccbtn.style.borderColor = 'royalblue';
         tositebtn.style.color = 'var(--color)';
         tositebtn.style.borderColor = 'transparent';
+    }
+    function logout(){
+        let link = window.location.href;
+        var api = link.split('setting')[0]+'logout';
+        let ask = confirm('Are you sure to logout?');
+        if(ask == true){
+            fetch(api).then(re=>re.json()).then(g=>{
+                if(g.status == 'success'){
+                    window.location.href = '../auth/login'
+                }
+            })
+        }
     }
 </script>

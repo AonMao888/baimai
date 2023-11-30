@@ -77,3 +77,5 @@ var toastdiv = document.querySelector(".toastdiv");
             document.querySelector(".emaildiv").style.display = 'flex';
             document.querySelector(".passdiv").style.display = 'none';
         }
+var link = window.location.href;
+document.querySelector("form").action = '../../auth/signup?next='+link.split('/auth')[0];
