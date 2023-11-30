@@ -33,6 +33,7 @@ const checkuser = (req,res,next) =>{
 }
 
 //listen css file
+app.get('/img/logo.png',(req,res)=>{res.sendFile(__dirname+'/assets/img/logo.png')})
 app.get('/css/home.css',(req,res)=>{res.sendFile(__dirname+'/assets/css/home.css')})
 app.get('/css/login.css',(req,res)=>{res.sendFile(__dirname+'/assets/css/login.css')})
 app.get('/css/signup.css',(req,res)=>{res.sendFile(__dirname+'/assets/css/signup.css')})
@@ -43,11 +44,9 @@ app.get('/page/needverify.html',(req,res)=>{res.sendFile(__dirname+'/page/needve
 app.get('/',checkuser,async(req,res)=>{
     const { data: { user }} = await supabase.auth.getUser();
     if(user != null){
-        console.log(user)
-        console.log(user.user_metadata)
+
     }else{
-        //res.redirect('/auth/login');
-        console.log(user)
+        res.redirect('/auth/login');
     }
     const {data:posts,error} = await supabase.from('post').select('*');
     res.render('main',{
@@ -89,7 +88,7 @@ app.get('/auth/login',async(req,res)=>{
 })
 
 //listen signup post request
-app.post('/signup',async(req,res)=>{
+app.post('/auth/signup',async(req,res)=>{
     const {data,error} = await supabase.auth.signUp({
         email:req.body.email,
         password:req.body.pass,
@@ -108,7 +107,7 @@ app.post('/signup',async(req,res)=>{
 
     }
 })
-app.post('/login',async(req,res)=>{
+app.post('/auth/login',async(req,res)=>{
     const {data,error} = await supabase.auth.signInWithPassword({
         email:req.body.email,
         password:req.body.pass
