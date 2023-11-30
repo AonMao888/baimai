@@ -620,21 +620,6 @@ nav{
     border-radius: 5px;
     font-size: 15px;
 }
-.logoutbtn{
-    color: red;
-    display: flex;
-    justify-content: center;
-    margin: 5px auto;
-    width: 36%;
-    cursor: pointer;
-    background: none;
-    padding: 8px;
-    outline: none;
-    border: 2px solid red;
-    border-radius: 9px;
-    align-items: center;
-}
-.logoutbtn ion-icon{font-size: 23px;}
 
 @media(max-width:1400px){
     .setting .right{min-width: 324px;}
