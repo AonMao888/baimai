@@ -8,12 +8,8 @@
             <h1>Site Settings</h1>
             <div class="settingrid">
                 <div class="sitem" title="Set dark mode on or off">
-                    <h2>Dark mode</h2>
-                    <div class="siin">
-                        <p>on</p>
-                        <div class="switch off"><div class="switchin"></div></div>
-                        <p>off</p>
-                    </div>
+                    <h2>Theme</h2>
+                    <button class="dlbtn" onclick="dl()"><ion-icon name="sunny-outline"></ion-icon><p>Light mode</p></button>
                 </div>
                 <div class="sitem">
                     <h2>Language</h2>
@@ -63,6 +59,27 @@
     var accdiv = document.querySelector(".setting .right");
     var tositebtn = document.querySelector(".select a:nth-child(1)");
     var toaccbtn = document.querySelector(".select a:nth-child(2)");
+    var dlbtn = document.querySelector(".dlbtn");
+
+    function checkdl(){
+        let getdarkmode = localStorage.getItem('darkmode');
+        if(!getdarkmode){
+            localStorage.setItem('darkmode','off');
+            document.documentElement.style.setProperty('--color','#333');
+            document.documentElement.style.setProperty('--back','#fff');
+        }else{
+            if(getdarkmode == 'on'){
+                document.documentElement.style.setProperty('--color','#fff');
+                document.documentElement.style.setProperty('--back','#333');
+                dlbtn.innerHTML = `<ion-icon name="moon-outline"></ion-icon><p>Dark mode</p>`;
+            }else{
+                document.documentElement.style.setProperty('--color','#333');
+                document.documentElement.style.setProperty('--back','#fff');
+                dlbtn.innerHTML = `<ion-icon name="sunny-outline"></ion-icon><p>Light mode</p>`;
+            }
+        }
+    }
+    checkdl()
     function tosite(){
         sitediv.style.display = 'flex';
         accdiv.style.display = 'none';
@@ -89,6 +106,16 @@
                     window.location.href = '../auth/login'
                 }
             })
+        }
+    }
+    function dl(){
+        let got = localStorage.getItem('darkmode');
+        if(got == 'on'){
+            localStorage.setItem('darkmode','off');
+            checkdl()
+        }else{
+            localStorage.setItem('darkmode','on');
+            checkdl()
         }
     }
 </script>

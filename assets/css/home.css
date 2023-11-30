@@ -512,29 +512,21 @@ nav{
     color: var(--color);
     margin: 5px 10px;
 }
-.switch{
+.sitem .dlbtn{
     display: flex;
-    border-radius: 51px;
-    overflow: hidden;
+    align-items: center;
+    background: none;
+    outline: none;
     cursor: pointer;
-    width: 48px;
-    background: var(--back);
-    border: 1px solid rgba(105, 105, 105, 0.23);
+    border: 2px solid royalblue;
+    border-radius: 8px;
+    margin-left: 10px;
+    width: 89%;
+    padding: 5px 8px;
+    color: var(--color);
 }
-.switch.on{
-    justify-content: flex-start;
-}
-.switch.off{
-    justify-content: flex-end;
-}
-.switch:hover .switchin{background: rgb(65, 76, 225);}
-.switchin{
-    width: 19px;
-    transition: 0.3s;
-    height: 19px;
-    background: royalblue;
-    border-radius: 50%;
-    margin: 2.5px;
+.sitem .dlbtn ion-icon{
+    font-size: 23px;
 }
 .setting .right{
     display: flex;
@@ -577,7 +569,7 @@ nav{
     margin: 19px auto;
     border: none;
     height: 0.5px ;
-    background: rgba(54, 54, 54, 0.211);
+    background: rgba(126, 126, 126, 0.211);
 }
 .setting .right h2{
     margin: 5px;
@@ -615,8 +607,9 @@ nav{
     height: 39px;
     margin: 0;
     width: 95%;
+    color: var(--color);
     background: var(--back);
-    border: 1px solid rgba(54, 54, 54, 0.211);
+    border: 1px solid rgba(126, 126, 126, 0.211);
     border-radius: 5px;
     font-size: 15px;
 }

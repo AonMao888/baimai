@@ -81,7 +81,7 @@ app.get('/auth/signup',async(req,res)=>{
     if(user == null){
         
     }else{
-        res.redirect('https://baimai.vercel.app')
+        res.redirect('../../')
     }
     res.render('signup')
     console.log(user)
@@ -110,8 +110,11 @@ app.post('/auth/signup',async(req,res)=>{
     if(data){
         req.session.user = data;
         req.session.authenticated = true;
-        res.redirect(req.query.next);
-
+        if(req.query.next){
+            res.redirect(req.query.next);
+        }else{
+            res.redirect('https://baimai.vercel.app');
+        }
     }
 })
 app.post('/auth/login',async(req,res)=>{
@@ -122,7 +125,11 @@ app.post('/auth/login',async(req,res)=>{
     if(data){
         req.session.user = data;
         req.session.authenticated = true;
-        res.redirect(req.query.next);
+        if(req.query.next){
+            res.redirect(req.query.next);
+        }else{
+            res.redirect('../../')
+        }
     }
 })
 
@@ -130,7 +137,7 @@ app.post('/auth/login',async(req,res)=>{
 app.get('/settings',async(req,res)=>{
     const {data,error} = await supabase.auth.getUser();
     if(data.user == null){
-        res.redirect('/auth/login');
+        res.redirect('/auth/login?next=https://baimai.vercel.app');
     }else{
         res.render('main',{
             title:"Settings | BaiMai ပၢႆးမႂ်ႇ",
