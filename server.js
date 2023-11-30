@@ -11,7 +11,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.set('views',__dirname+'/views');
 app.set('view engine','ejs');
-app.use(express.static('assets'));
 const supabase = createClient(url,key);
 app.use(session({
     secret:'baimai789#@',
@@ -41,6 +40,12 @@ app.get('/css/signup.css',(req,res)=>{res.sendFile(__dirname+'/assets/css/signup
 app.get('/font/jojar.ttf',(req,res)=>{res.sendFile(__dirname+'/assets/font/jojar.ttf')})
 app.get('/js/signup.js',(req,res)=>{res.sendFile(__dirname+'/assets/js/signup.js')})
 app.get('/page/needverify.html',(req,res)=>{res.sendFile(__dirname+'/page/needverify.html')})
+
+//render component file
+app.get('/component/allpost.ejs',(req,res)=>{res.sendFile(__dirname+'/component/allpost.ejs')})
+app.get('/component/homepostimg.ejs',(req,res)=>{res.sendFile(__dirname+'/component/homepostimg.ejs')})
+app.get('/component/setting.ejs',(req,res)=>{res.sendFile(__dirname+'/component/setting.ejs')})
+app.get('/component/viewpost.ejs',(req,res)=>{res.sendFile(__dirname+'/component/viewpost.ejs')})
 
 //listen home page(main page)
 app.get('/',checkuser,async(req,res)=>{
