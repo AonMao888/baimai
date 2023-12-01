@@ -53,7 +53,8 @@ app.get('/',checkuser,async(req,res)=>{
     if(user != null){
 
     }else{
-        res.redirect('/auth/login');
+        let url = req.protocol+'://'+req.get('host')
+        res.redirect(url+'/auth/login');
     }
     const {data:posts,error} = await supabase.from('post').select('*');
     res.render('main',{
@@ -81,7 +82,7 @@ app.get('/auth/signup',async(req,res)=>{
     if(user == null){
         
     }else{
-        res.redirect('../../')
+        res.redirect(req.protocol+'://'+req.get('host'))
     }
     res.render('signup')
     console.log(user)
@@ -90,7 +91,7 @@ app.get('/auth/signup',async(req,res)=>{
 //listen login page
 app.get('/auth/login',async(req,res)=>{
     const { data: { user } } = await supabase.auth.getUser()
-    if(user){res.redirect('../../')}
+    if(user){res.redirect(req.protocol+'://'+req.get('host'))}
     res.render('login')
 })
 
@@ -113,7 +114,8 @@ app.post('/auth/signup',async(req,res)=>{
         if(req.query.next){
             res.redirect(req.query.next);
         }else{
-            res.redirect('https://baimai.vercel.app');
+            let url = req.protocol+'://'+req.get('host')
+            res.redirect(url);
         }
     }
 })
@@ -123,21 +125,23 @@ app.post('/auth/login',async(req,res)=>{
         password:req.body.pass
     })
     if(data){
+        let url = req.protocol+'://'+req.get('host')
         req.session.user = data;
         req.session.authenticated = true;
         if(req.query.next){
             res.redirect(req.query.next);
         }else{
-            res.redirect('../../')
+            res.redirect(url)
         }
     }
 })
 
 //listen settings page
 app.get('/settings',async(req,res)=>{
+    let url = req.protocol+'://'+req.get('host')
     const {data,error} = await supabase.auth.getUser();
     if(data.user == null){
-        res.redirect('/auth/login?next=https://baimai.vercel.app');
+        res.redirect(url+'/auth/login?next=https://baimai.vercel.app');
     }else{
         res.render('main',{
             title:"Settings | BaiMai ပၢႆးမႂ်ႇ",
@@ -150,9 +154,10 @@ app.get('/settings',async(req,res)=>{
 
 //listen upload page
 app.get('/upload',async(req,res)=>{
+    let url = req.protocol+'://'+req.get('host')
     const {data,error} = await supabase.auth.getUser();
     if(data.user == null){
-        res.redirect('/auth/login?next=https://baimai.vercel.app');
+        res.redirect(url+'/auth/login?next=https://baimai.vercel.app');
     }else{
         res.render('main',{
             title:"Add memories | BaiMai ပၢႆးမႂ်ႇ",
@@ -169,4 +174,8 @@ app.get('/logout',async(req,res)=>{
     res.json({status:'success'});
 })
 
+app.get('/do',(req,res)=>{
+    let url = req.protocol+'://'+req.get('host')
+    res.send(url)
+})
 app.listen(80,()=>console.log('server started with port 80'))
