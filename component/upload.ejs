@@ -139,8 +139,8 @@
     function clearimg5() { document.querySelector('.img5 img').src = '' }
 
     //up
-    let uname = '<%=data.user_metadata.name%>';
-    let uemail = '<%=data.email%>';
+    let uname = '<%=data.user.user_metadata.name%>';
+    let uemail = '<%=data.user.email%>';
     function up(){
         alert(uname+','+uemail)
     }
