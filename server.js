@@ -145,7 +145,21 @@ app.get('/settings',async(req,res)=>{
             component:"../component/setting.ejs",
             data:data
         })
-        console.log(data)
+    }
+})
+
+//listen upload page
+app.get('/upload',async(req,res)=>{
+    const {data,error} = await supabase.auth.getUser();
+    if(data.user == null){
+        res.redirect('/auth/login?next=https://baimai.vercel.app');
+    }else{
+        res.render('main',{
+            title:"Add memories | BaiMai ပၢႆးမႂ်ႇ",
+            des:"What memories you have today? Upload it to BaiMai ပၢႆးမႂ်ႇ",
+            component:"../component/upload.ejs",
+            data:data
+        })
     }
 })
 

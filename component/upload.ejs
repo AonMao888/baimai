@@ -1,0 +1,141 @@
+<div class="up">
+    <div class="left">
+        <label for="img1inp" class="bigbtn selectbtn1">
+            <ion-icon name="add-circle-outline"></ion-icon>
+            <h1>Add photo<span>Click to select photo</span></h1>
+        </label>
+        <input type="file" accept="image/*" id="img1inp" style="display: none;">
+        <div class="upimg">
+            <div class="imgpick img1">
+                <div class="hbtn">
+                    <a title="Reselect"><label for="img1inp"><ion-icon name="refresh-outline"></ion-icon></label></a>
+                    <a href="javascript:clearimg1()" title="Delete"><ion-icon name="trash-outline"></ion-icon></a>
+                </div>
+                <img src="" class="img1" alt="">
+            </div>
+            <label for="img2inp" class="bigbtn selectbtn2">
+                <ion-icon name="add-circle-outline"></ion-icon>
+                <h1>Add more photo<span>Click to select photo</span></h1>
+            </label>
+            <input type="file" accept="image/*" id="img2inp" style="display: none;">
+            <div class="imgpick img2">
+                <div class="hbtn">
+                    <a title="Reselect"><label for="img2inp"><ion-icon name="refresh-outline"></ion-icon></label></a>
+                    <a href="javascript:clearimg2()" title="Delete"><ion-icon name="trash-outline"></ion-icon></a>
+                </div>
+                <img src="" class="img2" alt="">
+            </div>
+            <label for="img3inp" class="bigbtn selectbtn3">
+                <ion-icon name="add-circle-outline"></ion-icon>
+                <h1>Add more photo<span>Click to select photo</span></h1>
+            </label>
+            <input type="file" accept="image/*" id="img3inp" style="display: none;">
+            <div class="imgpick img3">
+                <div class="hbtn">
+                    <a title="Reselect"><label for="img3inp"><ion-icon name="refresh-outline"></ion-icon></label></a>
+                    <a href="javascript:clearimg3()" title="Delete"><ion-icon name="trash-outline"></ion-icon></a>
+                </div>
+                <img src="" class="img3" alt="">
+            </div>
+            <label for="img4inp" class="bigbtn selectbtn4">
+                <ion-icon name="add-circle-outline"></ion-icon>
+                <h1>Add more photo<span>Click to select photo</span></h1>
+            </label>
+            <input type="file" accept="image/*" id="img4inp" style="display: none;">
+            <div class="imgpick img4">
+                <div class="hbtn">
+                    <a title="Reselect"><label for="img4inp"><ion-icon name="refresh-outline"></ion-icon></label></a>
+                    <a href="javascript:clearimg4()" title="Delete"><ion-icon name="trash-outline"></ion-icon></a>
+                </div>
+                <img src="" class="img4" alt="">
+            </div>
+            <label for="img5inp" class="bigbtn selectbtn5">
+                <ion-icon name="add-circle-outline"></ion-icon>
+                <h1>Add more photo<span>Click to select photo</span></h1>
+            </label>
+            <input type="file" accept="image/*" id="img5inp" style="display: none;">
+            <div class="imgpick img5">
+                <div class="hbtn">
+                    <a title="Reselect"><label for="img5inp"><ion-icon name="refresh-outline"></ion-icon></label></a>
+                    <a href="javascript:clearimg5()" title="Delete"><ion-icon name="trash-outline"></ion-icon></a>
+                </div>
+                <img src="" class="img5" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        
+        <h1>What's description <a href="" title="What's this?"><ion-icon name="help-circle-outline"></ion-icon></a></h1>
+        <p class="updes" contenteditable=""></p>
+        <div class="uptool">
+            <div class="uplink">
+                <a href="" title="Add emotion"><ion-icon name="happy-outline"></ion-icon></a>
+                <a href="" title="Add location"><ion-icon name="location-outline"></ion-icon></a>
+            </div>
+            <button>Upload</button>
+        </div>
+    </div>
+</div>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+    let currentimg = 1;
+    var img1inp = document.querySelector("#img1inp");
+    var img2inp = document.querySelector("#img2inp");
+    var img3inp = document.querySelector("#img3inp");
+    var img4inp = document.querySelector("#img4inp");
+    var img5inp = document.querySelector("#img5inp");
+
+    function select() {
+        imginp.click()
+    }
+    img1inp.onchange = () => {
+        let reader = new FileReader();
+        reader.readAsDataURL(img1inp.files[0]);
+        reader.addEventListener('load', () => {
+            document.querySelector(".img1 img").src = reader.result;
+            document.querySelector(".selectbtn1").remove();
+            document.querySelector(".selectbtn2").style.display = 'flex';
+        })
+    }
+    img2inp.onchange = () => {
+        let reader = new FileReader();
+        reader.readAsDataURL(img2inp.files[0]);
+        reader.addEventListener('load', () => {
+            document.querySelector(".img2 img").src = reader.result;
+            document.querySelector(".selectbtn2").remove();
+            document.querySelector(".selectbtn3").style.display = 'flex';
+        })
+    }
+    img3inp.onchange = () => {
+        let reader = new FileReader();
+        reader.readAsDataURL(img3inp.files[0]);
+        reader.addEventListener('load', () => {
+            document.querySelector(".img3 img").src = reader.result;
+            document.querySelector(".selectbtn3").remove();
+            document.querySelector(".selectbtn4").style.display = 'flex';
+        })
+    }
+    img4inp.onchange = () => {
+        let reader = new FileReader();
+        reader.readAsDataURL(img4inp.files[0]);
+        reader.addEventListener('load', () => {
+            document.querySelector(".img4 img").src = reader.result;
+            document.querySelector(".selectbtn4").remove();
+            document.querySelector(".selectbtn5").style.display = 'flex';
+        })
+    }
+    img5inp.onchange = () => {
+        let reader = new FileReader();
+        reader.readAsDataURL(img5inp.files[0]);
+        reader.addEventListener('load', () => {
+            document.querySelector(".img5 img").src = reader.result;
+            document.querySelector(".selectbtn5").remove();
+        })
+    }
+    function clearimg1() { document.querySelector('.img1 img').src = ''; }
+    function clearimg2() { document.querySelector('.img2 img').src = '' }
+    function clearimg3() { document.querySelector('.img3 img').src = '' }
+    function clearimg4() { document.querySelector('.img4 img').src = '' }
+    function clearimg5() { document.querySelector('.img5 img').src = '' }
+</script>

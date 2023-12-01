@@ -545,7 +545,7 @@ nav{
     color: var(--color);
 }
 .setting .accinfo{
-    background: rgba(203, 203, 203, 0.2);
+    background: rgba(203, 203, 203, 0.158);
     margin: 12px 7px;
     border-radius: 12px;
     overflow: hidden;
@@ -613,10 +613,197 @@ nav{
     border-radius: 5px;
     font-size: 15px;
 }
+.up{
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    overflow-x: hidden;
+}
+.up .left{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.up .bigbtn{
+    background: linear-gradient(42deg,rgb(65, 225, 225),rgb(86, 128, 255));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 9px 19px;
+    transition: 0.3s;
+}
+.up .bigbtn:hover{
+    color: var(--back);
+}
+.up .bigbtn ion-icon{
+    font-size: 59px;
+}
+.up .bigbtn h1{
+    margin: 5px;
+    margin-left: 19px;
+    font-size: 21px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.up .bigbtn h1 span{
+    font-size: 14px;
+}
+.upimg{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.imgpick{
+    width: max-content;
+    max-width: 45%;
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+}
+.imgpick:hover .hbtn{
+    top: 4px;
+}
+.imgpick .hbtn{
+    position: absolute;
+    top: -63px;
+    right: 4px;
+    display: flex;
+    align-items: center;
+    background: rgba(51, 51, 51, 0.366);
+    border-radius: 7px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.imgpick .hbtn a{
+    text-decoration: none;
+    color: white;
+    font-size: 19px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.imgpick .hbtn a label{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imgpick .hbtn a:hover{
+    background: #eee;
+    color: #333;
+}
+.imgpick img{
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+    user-select: none;
+}
+.up .selectbtn2{display: none;}
+.up .selectbtn3{display: none;}
+.up .selectbtn4{display: none;}
+.up .selectbtn5{display: none;}
+.up .right{
+    display: flex;
+    height: max-content;
+    position: sticky;
+    top: 9px;
+    overflow-x: hidden;
+    flex-direction: column;
+    min-width: 444px;
+    max-width: 444px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 12px;
+    margin: 5px;
+}
+.up .right h1{
+    margin: 4px;
+    font-size: 27px;
+    margin-top: 9px;
+    margin-left: 10px;
+    color: var(--color);
+    display: flex;
+    align-items: center;
+}
+.up .right h1 a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    margin-left: 3px;
+    padding: 3px;
+    color: royalblue;
+}
+.up .right .updes{
+    background: none;
+    outline: none;
+    width: 95%;
+    min-height: 63px;
+    max-width: 95%;
+    font-family: jojar;
+    font-size: 19px;
+    color: var(--color);
+    padding: 5px;
+    height: max-content;
+    margin: 5px auto;
+}
+.uptool{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+.up .uplink{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+.up .uplink a{
+    padding: 2px;
+    font-size: 26px;
+    margin-right: 9px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.uplink a:nth-child(1){color: rgb(255, 205, 40);}
+.uplink a:nth-child(2){color: royalblue;}
+.up .uplink a:hover{
+    color: var(--color);
+}
+.uptool button{
+    background: linear-gradient(-42deg,rgb(68, 65, 225),rgb(158, 41, 208));
+    outline: none;
+    border: none;
+    margin: 9px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    padding: 11px 19px;
+    font-size: 15px;
+}
 
 @media(max-width:1400px){
     .setting .right{min-width: 324px;}
     .settingrid{grid-template-columns: repeat(3,1fr);}
+    .imgpick{max-width: 49%;}
+    .up .right{min-width: 424px;max-width: 424px;}
+    .up .right h1{font-size: 24px;}
+    .up .bigbtn ion-icon{font-size: 55px;}
+    .up .bigbtn h1{font-size: 20px;}
+    .up .bigbtn h1 span{font-size: 13px;}
 }
 @media(max-width:1333px){
     .logo img{height: 36px;}
@@ -662,10 +849,26 @@ nav{
         width: 100%;
         height: 200px;
     }
+    .imgpick{max-width: 55%;}
+    .up .right{min-width: 391px;max-width: 391px;}
+    .up .right h1{font-size: 21px;}
+    .up .right .updes{font-size: 18px;}
+    .up .uplink a{font-size: 24px;}
+    .uptool button{padding: 10px 18px;font-size: 14px;}
 }
 @media(max-width:1212px){
     .setting .right{min-width: 300px;}
     .settingrid{grid-template-columns: repeat(2,1fr);}
+    .up .bigbtn ion-icon{font-size: 51px;}
+    .up .bigbtn h1{font-size: 19px;}
+    .up .bigbtn h1 span{font-size: 12px;}
+    .imgpick{max-width: 59%;}
+    .up .right{min-width: 372px;max-width: 372px;}
+    .up .right h1{font-size: 19px;}
+    .up .right h1 a{font-size: 19px;margin-left: 1px;}
+    .up .right .updes{font-size: 18px;}
+    .up .uplink a{font-size: 24px;}
+    .uptool button{padding: 10px 18px;font-size: 14px;}
 }
 @media(max-width:1100px){
     .search{max-width: 429px;}
@@ -701,6 +904,23 @@ nav{
         transform: rotate(45deg);
         left: -2px;
     }
+    .up .bigbtn ion-icon{font-size: 51px;}
+    .up .bigbtn h1{font-size: 19px;}
+    .up .bigbtn h1 span{font-size: 12px;}
+    .up .right{min-width: 372px;max-width: 372px;}
+    .up .right h1{font-size: 23px;}
+    .imgpick{max-width: 55%;}
+}
+@media(max-width:978px){
+    .imgpick{max-width: 63%;}
+    .imgpick .hbtn a{font-size: 17px;}
+    .up .right{min-width: 359px;max-width: 359px;}
+    .up .right h1{font-size: 18px;}
+    .up .bigbtn ion-icon{font-size: 45px;}
+    .up .bigbtn h1{font-size: 18px;}
+    .up .bigbtn h1 span{font-size: 12px;}
+    .uptool button{padding: 9px 18px;font-size: 14px;}
+    .up .right .updes{font-size: 17px;}
 }
 @media(max-width:888px){
     .search{display: none;}
@@ -726,6 +946,13 @@ nav{
     .setting .left{margin-left: 0;width: 98%;margin: 0 auto;}
     .setting .right{display: none;width: 98%;margin: 9px auto;border: none;}
     .setting .right h1{display: none;}
+    .imgpick{max-width: 69%;}
+    .up .right{min-width: 342px;max-width: 342px;}
+    .up .bigbtn{padding: 13px;}
+    .up .bigbtn ion-icon{font-size: 42px;}
+    .up .bigbtn h1{font-size: 17px;}
+    .up .bigbtn h1 span{font-size: 12px;}
+    .up .right .updes{font-size: 17px;margin: 3px auto;}
 }
 @media(max-width:808px){
     .item{flex-direction: column;}
@@ -734,6 +961,10 @@ nav{
     .btn{margin-bottom: 7px;}
     .btn button ion-icon{font-size: 19px;}
     .btn button p{font-size: 13px;}
+    .up{flex-direction: column-reverse;align-items: center;}
+    .up .left{width: 98%;}
+    .imgpick{max-width: 59%;}
+    .up .right{min-width: 96%;max-width: 96%;}
 }
 @media(max-width:666px){
     .img img{height: 151px;}
@@ -741,6 +972,7 @@ nav{
     .post .nav .posterimg img{width: 39px;height: 39px;}
     .text{font-size: 17px;}
     .v span{font-size: 15px;}
+    .imgpick{max-width: 63%;}
 }
 @media(max-width:500px){
     .logo img{height: 30px;}
@@ -768,8 +1000,10 @@ nav{
         display: none;
     }
     .item{width: 95%;margin: 9px 0;}
+    .imgpick .hbtn{top: 4px;}
 }
 @media(max-width:374px){
     .img img{height: 132px;}
     .post{width: 99%;}
+    .imgpick{max-width: 69%;}
 }
