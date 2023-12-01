@@ -16,7 +16,7 @@ app.use(session({
     secret:'baimai789#@',
     resave:true,
     saveUninitialized:true,
-    cookie:{secure:true,maxAge: 6000*6000*1000*9000}
+    cookie:{secure:false,maxAge: 6000*6000*1000*9000}
 }))
 
 app.use((req,res,next)=>{
@@ -115,7 +115,7 @@ app.post('/auth/signup',async(req,res)=>{
             res.redirect(req.query.next);
         }else{
             let url = req.protocol+'://'+req.get('host')
-            res.redirect(url);
+            return res.redirect(url);
         }
     }
 })
@@ -131,7 +131,7 @@ app.post('/auth/login',async(req,res)=>{
         if(req.query.next){
             res.redirect(req.query.next);
         }else{
-            res.redirect(url)
+            return res.redirect(url)
         }
     }
 })
