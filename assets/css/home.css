@@ -725,15 +725,25 @@ nav{
     border: 1px solid rgb(204, 204, 204);
     border-radius: 12px;
     margin: 5px;
+    padding-top: 9px;
 }
 .up .right h1{
     margin: 4px;
-    font-size: 27px;
-    margin-top: 9px;
+    font-size: 26px;
+    margin-top: 0;
     margin-left: 10px;
     color: var(--color);
     display: flex;
     align-items: center;
+}
+.up .right h1 img{
+    height: 42px;
+    width: 42px;
+    border-radius: 5px;
+    object-fit: cover;
+    margin-right: 7px;
+    object-position: center;
+    user-select: none;
 }
 .up .right h1 a{
     text-decoration: none;
@@ -794,6 +804,7 @@ nav{
     padding: 11px 19px;
     font-size: 15px;
 }
+
 
 @media(max-width:1400px){
     .setting .right{min-width: 324px;}
@@ -1001,6 +1012,7 @@ nav{
     }
     .item{width: 95%;margin: 9px 0;}
     .imgpick .hbtn{top: 4px;}
+    .up .right h1 img{width: 39px;height: 39px;}
 }
 @media(max-width:374px){
     .img img{height: 132px;}

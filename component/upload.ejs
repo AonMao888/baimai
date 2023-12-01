@@ -64,15 +64,14 @@
         </div>
     </div>
     <div class="right">
-        
-        <h1>What's description <a href="" title="What's this?"><ion-icon name="help-circle-outline"></ion-icon></a></h1>
+        <h1><img src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8" alt=""> What's description <a href="" title="What's this?"><ion-icon name="help-circle-outline"></ion-icon></a></h1>
         <p class="updes" contenteditable=""></p>
         <div class="uptool">
             <div class="uplink">
                 <a href="" title="Add emotion"><ion-icon name="happy-outline"></ion-icon></a>
                 <a href="" title="Add location"><ion-icon name="location-outline"></ion-icon></a>
             </div>
-            <button>Upload</button>
+            <button onclick="up()">Upload</button>
         </div>
     </div>
 </div>
@@ -138,4 +137,11 @@
     function clearimg3() { document.querySelector('.img3 img').src = '' }
     function clearimg4() { document.querySelector('.img4 img').src = '' }
     function clearimg5() { document.querySelector('.img5 img').src = '' }
+
+    //up
+    let uname = '<%=data.user_metadata.name%>';
+    let uemail = '<%=data.email%>';
+    function up(){
+        alert(uname+','+uemail)
+    }
 </script>

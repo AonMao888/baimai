@@ -2,7 +2,6 @@ const express = require('express');
 const {createClient} = require('@supabase/supabase-js');
 const session = require('express-session');
 const ejs = require('ejs');
-const whois = require('whois-json');
 const app = express();
 const url = 'https://jeefhhpmoiofftuddara.supabase.co';
 const key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImplZWZoaHBtb2lvZmZ0dWRkYXJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDExODEzNDUsImV4cCI6MjAxNjc1NzM0NX0.yA4mqg37Xp-JGg5_Vsg5QLbXmSdlCcH9yElFX9yhfKc';
@@ -16,7 +15,7 @@ app.use(session({
     secret:'baimai789#@',
     resave:true,
     saveUninitialized:true,
-    cookie:{secure:false,maxAge: 6000*6000*1000*9000}
+    cookie:{secure:true,maxAge: 6000*6000*1000*9000}
 }))
 
 app.use((req,res,next)=>{
@@ -54,10 +53,10 @@ app.get('/',checkuser,async(req,res)=>{
 
     }else{
         let url = req.protocol+'://'+req.get('host')
-        res.redirect(url+'/auth/login');
+        return res.redirect(url+'/auth/login');
     }
     const {data:posts,error} = await supabase.from('post').select('*');
-    res.render('main',{
+    return res.render('main',{
         title:"BaiMai ပၢႆးမႂ်ႇ",
         des:"Create, upload and share your memories to the world with BaiMai(ပၢႆးမႂ်ႇ)",
         component:"../component/allpost.ejs",
@@ -69,7 +68,7 @@ app.get('/',checkuser,async(req,res)=>{
 app.get('/post',async(req,res)=>{res.redirect('./')})
 app.get('/post/:id',async(req,res)=>{
     const {data,error} = await supabase.from('post').select().eq('id',req.params.id);
-    res.render('main',{
+    return res.render('main',{
         title:"Post | BaiMai ပၢႆးမႂ်ႇ",
         des:"What post have today..",
         component:"../component/viewpost.ejs",
@@ -82,17 +81,17 @@ app.get('/auth/signup',async(req,res)=>{
     if(user == null){
         
     }else{
-        res.redirect(req.protocol+'://'+req.get('host'))
+        return res.redirect(req.protocol+'://'+req.get('host'))
     }
-    res.render('signup')
+    return res.render('signup')
     console.log(user)
 })
 
 //listen login page
 app.get('/auth/login',async(req,res)=>{
     const { data: { user } } = await supabase.auth.getUser()
-    if(user){res.redirect(req.protocol+'://'+req.get('host'))}
-    res.render('login')
+    if(user){return res.redirect(req.protocol+'://'+req.get('host'))}
+    return res.render('login')
 })
 
 //listen signup post request
@@ -112,7 +111,7 @@ app.post('/auth/signup',async(req,res)=>{
         req.session.user = data;
         req.session.authenticated = true;
         if(req.query.next){
-            res.redirect(req.query.next);
+            return res.redirect(req.query.next);
         }else{
             let url = req.protocol+'://'+req.get('host')
             return res.redirect(url);
@@ -129,7 +128,7 @@ app.post('/auth/login',async(req,res)=>{
         req.session.user = data;
         req.session.authenticated = true;
         if(req.query.next){
-            res.redirect(req.query.next);
+            return res.redirect(req.query.next);
         }else{
             return res.redirect(url)
         }
@@ -141,9 +140,9 @@ app.get('/settings',async(req,res)=>{
     let url = req.protocol+'://'+req.get('host')
     const {data,error} = await supabase.auth.getUser();
     if(data.user == null){
-        res.redirect(url+'/auth/login?next=https://baimai.vercel.app');
+        return res.redirect(url+'/auth/login?next=https://baimai.vercel.app');
     }else{
-        res.render('main',{
+        return res.render('main',{
             title:"Settings | BaiMai ပၢႆးမႂ်ႇ",
             des:"Settings for site and account.",
             component:"../component/setting.ejs",
@@ -157,13 +156,13 @@ app.get('/upload',async(req,res)=>{
     let url = req.protocol+'://'+req.get('host')
     const {data,error} = await supabase.auth.getUser();
     if(data.user == null){
-        res.redirect(url+'/auth/login?next=https://baimai.vercel.app');
+        return res.redirect(url+'/auth/login?next=https://baimai.vercel.app');
     }else{
-        res.render('main',{
+        return res.render('main',{
             title:"Add memories | BaiMai ပၢႆးမႂ်ႇ",
             des:"What memories you have today? Upload it to BaiMai ပၢႆးမႂ်ႇ",
             component:"../component/upload.ejs",
-            data:data
+            data:data.user
         })
     }
 })
@@ -171,7 +170,7 @@ app.get('/upload',async(req,res)=>{
 app.get('/logout',async(req,res)=>{
     const {error} = await supabase.auth.signOut();
     req.session.destroy();
-    res.json({status:'success'});
+    return res.json({status:'success'});
 })
 
 app.get('/do',(req,res)=>{
