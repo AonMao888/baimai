@@ -75,6 +75,19 @@
         </div>
     </div>
 </div>
+<form action="../upload" method="post" style="display: none;">
+    <input type="text" name="img1" class="fimg1">
+    <input type="text" name="img2" class="fimg2">
+    <input type="text" name="img3" class="fimg3">
+    <input type="text" name="img4" class="fimg4">
+    <input type="text" name="img5" class="fimg5">
+    <input type="text" name="des" class="fdes">
+    <input type="text" name="date" class="today">
+    <input type="text" name="uname" class="fname" value="<%=data.user.user_metadata.name%>">
+    <input type="text" name="uimg" class="fimg" value="<%=db[0].profile_img%>">
+    <input type="text" name="uid" class="fuid" value="<%=db[0].uid%>">
+    <button type="submit" class="fbtn"></button>
+</form>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script>
@@ -88,11 +101,30 @@
     function select() {
         imginp.click()
     }
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    setInterval(() => {
+        let hour = date.getHours();
+        let minute = date.getMinutes();
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        let formattedhour = hour;
+        if(formattedhour > 12){formattedhour -= 12;};
+        if(formattedhour === 0){formattedhour = 12};
+        let formattedMinutes = minute;
+        if (minute < 10) {
+        formattedMinutes = `0${minute}`;
+        }
+        document.querySelector(".today").value = `${formattedhour}:${formattedMinutes}${ampm} ${day}.${month}.${year}`;
+    }, 5000);
+
     img1inp.onchange = () => {
         let reader = new FileReader();
         reader.readAsDataURL(img1inp.files[0]);
         reader.addEventListener('load', () => {
             document.querySelector(".img1 img").src = reader.result;
+            document.querySelector(".fimg1").value = reader.result;
             document.querySelector(".selectbtn1").remove();
             document.querySelector(".selectbtn2").style.display = 'flex';
         })
@@ -102,6 +134,7 @@
         reader.readAsDataURL(img2inp.files[0]);
         reader.addEventListener('load', () => {
             document.querySelector(".img2 img").src = reader.result;
+            document.querySelector(".fimg2").value = reader.result;
             document.querySelector(".selectbtn2").remove();
             document.querySelector(".selectbtn3").style.display = 'flex';
         })
@@ -111,6 +144,7 @@
         reader.readAsDataURL(img3inp.files[0]);
         reader.addEventListener('load', () => {
             document.querySelector(".img3 img").src = reader.result;
+            document.querySelector(".fimg3").value = reader.result;
             document.querySelector(".selectbtn3").remove();
             document.querySelector(".selectbtn4").style.display = 'flex';
         })
@@ -120,6 +154,7 @@
         reader.readAsDataURL(img4inp.files[0]);
         reader.addEventListener('load', () => {
             document.querySelector(".img4 img").src = reader.result;
+            document.querySelector(".fimg4").value = reader.result;
             document.querySelector(".selectbtn4").remove();
             document.querySelector(".selectbtn5").style.display = 'flex';
         })
@@ -129,9 +164,15 @@
         reader.readAsDataURL(img5inp.files[0]);
         reader.addEventListener('load', () => {
             document.querySelector(".img5 img").src = reader.result;
+            document.querySelector(".fimg5").value = reader.result;
             document.querySelector(".selectbtn5").remove();
         })
     }
+
+    document.querySelector(".right .updes").onkeyup=()=>{
+        document.querySelector(".fdes").value = document.querySelector(".right .updes").textContent
+    }
+
     function clearimg1() { document.querySelector('.img1 img').src = ''; }
     function clearimg2() { document.querySelector('.img2 img').src = '' }
     function clearimg3() { document.querySelector('.img3 img').src = '' }
@@ -142,6 +183,6 @@
     let uname = '<%=data.user.user_metadata.name%>';
     let uemail = '<%=data.user.email%>';
     function up(){
-        alert(uname+','+uemail)
+        document.querySelector('.fbtn').click();
     }
 </script>

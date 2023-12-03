@@ -1,17 +1,11 @@
-<%if(list.length > 3){%>
-    <div class="img">
-        <img onerror="this.remove()" src="<%=list[0].link%>" alt="">
-        <img onerror="this.remove()" src="<%=list[1].link%>" alt="">
-        <img onerror="this.remove()" src="<%=list[2].link%>" alt="">
-        <a href="post/<%=item.id%>" class="photomore">
+<div class="img">
+    <img onerror="this.remove()" src="<%=list.img1%>" alt="">
+    <img onerror="this.remove()" src="<%=list.img2%>" alt="">
+    <img onerror="this.remove()" src="<%=list.img3%>" alt="">
+    <%if(list.img4 != null){%>
+        <a href="post/<%=list.id%>" class="photomore">
             <ion-icon name="grid-outline"></ion-icon>
             <p>See more</p>
         </a>
-    </div>
-<%}else{%>
-    <div class="img">
-    <%list.forEach((item)=>{%>
-        <img onerror="this.remove()" src="<%=item.link%>" alt="">
-    <%})%>
-    </div>
-<%}%>
+    <%}%>
+</div>

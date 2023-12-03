@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=profile[0].name%>'s Profile</title>
+    <link rel="stylesheet" href="../../css/profile.css">
+</head>
+<body>
+    <div class="top">
+        <div class="div">
+            <img class="background" src="https://lumiere-a.akamaihd.net/v1/images/sa_pixar_virtualbg_coco_16x9_9ccd7110.jpeg" alt="">
+            <a href="" class="changecover"><ion-icon name="refresh-outline"></ion-icon><p>Change cover</p></a>
+            <div class="search">
+                <input type="text" placeholder="Search in profile">
+                <button><ion-icon name="search-outline"></ion-icon></button>
+            </div>
+            <div class="head">
+                <div class="profile">
+                    <img src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8" alt="">
+                    <label for="profileinp"><ion-icon name="cloud-upload-outline"></ion-icon></label>
+                    <input style="display: none;" type="file" accept="image/*" id="profileinp">
+                </div>
+                <div class="name">
+                    <h1><%=profile[0].name%></h1>
+                    <%let follower = profile[0].follower%>
+                    <p><%=follower.length%> followers</p>
+                    <div class="star">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="btn">
+                    <button>Follow</button>
+                    <button onclick="pop()"><ion-icon name="qr-code-outline"></ion-icon></button>
+                    <button onclick="shar()"><ion-icon name="arrow-redo-outline"></ion-icon></button>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="linkdiv">
+        <div class="link">
+            <a href="javascript:showall()" class="linkbtn allbtn active">All</a>
+            <a href="javascript:showpost()" class="linkbtn postbtn">Post</a>
+            <a href="javascript:showinfo()" class="linkbtn infobtn">Info</a>
+            <a href="javascript:showfollower()" class="linkbtn followerbtn">Followers</a>
+            <a href="javascript:showsocial()" class="linkbtn socialbtn">Social</a>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="left">
+            <div class="box allinfo">
+                <h1>Info</h1>
+                <p class="b"><%=profile[0].bio%></p>
+                <hr>
+                <div class="des">
+                    <ion-icon name="home-outline"></ion-icon>
+                    <p>Live in <%=profile[0].location%></Township></p>
+                </div>
+                <div class="des">
+                    <ion-icon name="location-outline"></ion-icon>
+                    <p>From <%=profile[0].region%></p>
+                </div>
+                <div class="des">
+                    <ion-icon name="heart-circle-outline"></ion-icon>
+                    <p><%=profile[0].relation%></p>
+                </div>
+            </div>
+            <div class="box allsocial">
+                <h1>Social media</h1>
+                <div class="b">Some of social media 'name' use.</div>
+                <hr>
+                <a href="" class="des">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                    <p>Facebook</p>
+                </a>
+                <a href="" class="des">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                    <p>Instagram</p>
+                </a>
+                <a href="" class="des">
+                    <ion-icon name="logo-tiktok"></ion-icon>
+                    <p>Tik Tok</p>
+                </a>
+                <a href="" class="des">
+                    <ion-icon name="logo-wechat"></ion-icon>
+                    <p>Wechat</p>
+                </a>
+                <a href="" class="des">
+                    <ion-icon name="logo-youtube"></ion-icon>
+                    <p>Youtube</p>
+                </a>
+                <a href="" class="des">
+                    <ion-icon name="link-outline"></ion-icon>
+                    <p>Other Link</p>
+                </a>
+            </div>
+        </div>
+        <div class="right">
+            <div class="box item">
+                <div class="nav">
+                    <img src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8" alt="">
+                    <div class="poster">
+                        <h1>ၸၢႆးမၢဝ်း</h1>
+                        <p>2.12.2023</p>
+                    </div>
+                    <ion-icon onclick="more('one')" name="ellipsis-horizontal-outline"></ion-icon>
+                </div>
+                <div class="des">this is descriptionthis is descriptionthis is descriptionthis is descriptionthis is description</div>
+                <hr>
+                <div class="btn">
+                    <button class="liked"><ion-icon name="heart-outline"></ion-icon><p>(<span>0</span>)Like</p></button>
+                    <button onclick="pop('123')"><ion-icon name="qr-code-outline"></ion-icon><p>QR Code</p></button>
+                    <button onclick="shar('123')"><ion-icon name="share-social-outline"></ion-icon><p>Share</p></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="infodiv bigdiv">
+        <div class="forinfo">
+            <h1>Info</h1>
+            <div class="infogrid">
+                <div class="item">
+                    <p><ion-icon name="person-outline"></ion-icon>Name</p>
+                    <span>Sai Sai</span>
+                </div>
+                <div class="item">
+                    <p><ion-icon name="body-outline"></ion-icon>Gender</p>
+                    <span>Male</span>
+                </div>
+                <div class="item">
+                    <p><ion-icon name="today-outline"></ion-icon>Birth date</p>
+                    <span>12.12.2023</span>
+                </div>
+                <div class="item">
+                    <p><ion-icon name="heart-half-outline"></ion-icon>Age</p>
+                    <span>19 years</span>
+                </div>
+                <div class="item">
+                    <p><ion-icon name="heart-circle-outline"></ion-icon>Relation</p>
+                    <span>Single</span>
+                </div>
+                <div class="item">
+                    <p><ion-icon name="home-outline"></ion-icon>Township</p>
+                    <span>Mong Mao Kham</span>
+                </div>
+                <div class="item">
+                    <p><ion-icon name="location-outline"></ion-icon>Country</p>
+                    <span>Myanmar</span>
+                </div>
+            </div>
+        </div>
+        <div class="forsocial">
+            <h1>Social</h1>
+            <div class="sociallist">
+                <div class="left">
+                    <a href="" class="des">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                        <p>Facebook</p>
+                    </a>
+                    <a href="" class="des">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                        <p>Instagram</p>
+                    </a>
+                    <a href="" class="des">
+                        <ion-icon name="logo-tiktok"></ion-icon>
+                        <p>Tik Tok</p>
+                    </a>
+                    <a href="" class="des">
+                        <ion-icon name="logo-wechat"></ion-icon>
+                        <p>Wechat</p>
+                    </a>
+                    <a href="" class="des">
+                        <ion-icon name="logo-youtube"></ion-icon>
+                        <p>Youtube</p>
+                    </a>
+                    <a href="" class="des">
+                        <ion-icon name="link-outline"></ion-icon>
+                        <p>Other Link</p>
+                    </a>
+                </div>
+                <div class="right">
+                    <h1>Other link</h1>
+                    <div class="otherlink">
+                        <a href="">Douyin</a>
+                        <a href="">Viber</a>
+                        <a href="">Douyin</a>
+                        <a href="">Viber</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="forfollower">
+            <div class="nav">
+                <h1>Followers</h1>
+                <p>15 followers</p>
+            </div>
+            <div class="followerlist">
+                <a href="">
+                    <img src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8" alt="">
+                    <p>Name</p>
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="pop">
+        <div class="popdiv">
+            <div class="nav">
+                <img src="https://icons-for-free.com/iconfiles/png/512/code+magnifying+glass+qr+qr+code+icon-1320185615675830653.png" alt="">
+                <div class="name">
+                    <h1>Sai Sai</h1>
+                    <p>id 123</p>
+                </div>
+            </div>
+            <div class="qrdiv">
+                <p>Loading...</p>
+                <img loading="lazy" src="https://icons-for-free.com/iconfiles/png/512/code+magnifying+glass+qr+qr+code+icon-1320185615675830653.png" class="qrimg" alt="">
+            </div>
+        </div>
+        <div class="popbtn">
+            <a href=""><button onclick="save()"><ion-icon name="download-outline"></ion-icon><p>Download</p></button></a>
+            <button onclick="closepop()"><ion-icon name="close-outline"></ion-icon><p>Close</p></button>
+        </div>
+    </div>
+    <div class="bar">
+        <div class="left">
+            <a onclick="window.history.back()" class="back"><ion-icon name="chevron-back-outline"></ion-icon><p>Back</p></a>
+        </div>
+        <div class="right">
+            <button class="bb"><ion-icon name="create-outline"></ion-icon><p>Add Post</p></button>
+            <button class="bb"><ion-icon name="videocam-outline"></ion-icon><p>Go Live</p></button>
+            <button class="follow">Follow</button>
+            <a href=""><ion-icon name="ellipsis-vertical-outline"></ion-icon></a>
+        </div>
+    </div>
+    <div class="more">
+        <a href="javascript:closemore()" class="mclose"><ion-icon name="close-outline"></ion-icon></a>
+        <a href="" class="mlink"><ion-icon name="cut-outline"></ion-icon><p>Edit post</p></a>
+        <a href="" class="mlink"><ion-icon name="bookmark-outline"></ion-icon><p>Save post</p></a>
+        <a href="" class="mlink"><ion-icon name="chatbubble-ellipses-outline"></ion-icon></ion-icon><p>Report</p></a>
+        <a href="" class="mlink"><ion-icon name="trash-outline"></ion-icon><p>Delete post</p></a>
+        <hr>
+        <div class="tool">
+            <a href=""><ion-icon name="link-outline"></ion-icon><p>Copy link</p></a>
+            <a href=""><ion-icon name="arrow-redo-outline"></ion-icon><p>Share link</p></a>
+            <a href=""><ion-icon name="qr-code-outline"></ion-icon><p>QR Code</p></a>
+        </div>
+    </div>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        var morediv = document.querySelector(".more");
+        var popdiv = document.querySelector(".pop");
+        var qrimg = document.querySelector(".qrimg");
+        var qrdiv = document.querySelector(".qrdiv");
+        var loadingp = document.querySelector(".qrdiv p");
+        var allbtn = document.querySelector(".allbtn");
+        var postbtn = document.querySelector(".postbtn");
+        var infobtn = document.querySelector(".infobtn");
+        var followerbtn = document.querySelector(".followerbtn");
+        var socialbtn = document.querySelector(".socialbtn");
+        var maingriddiv = document.querySelector(".grid");
+        var forinfo = document.querySelector(".forinfo");
+        var forsocial = document.querySelector(".forsocial");
+        var forfollower = document.querySelector(".forfollower");
+
+        qrimg.onload=()=>{
+            loadingp.style.display='none';
+        }
+
+        function more(id){morediv.style.bottom = 0;}
+        function closemore(id){morediv.style.bottom = '-78vh';}
+        function shar(id){
+            let link = window.location.href;
+            let url = link.split('/profile')[0];
+            if(id){
+                navigator.share({
+                    title:`'s post`,
+                    url:url+'/post/'+id
+                })
+            }else{
+                navigator.share({
+                    title:`'s profile in BaiMai`,
+                    url:link
+                })
+            }
+        }
+        function pop(id){
+            let link = window.location.href;
+            let url = link.split('/profile')[0];
+            popdiv.style.display = 'flex';
+            loadingp.style.display='block';
+            if(id){
+                let data = 'https://maoapi.vercel.app/qrcode?text='+url+'/post/'+id;
+                qrimg.src = data;
+                document.querySelector(".popbtn a").href = `javascript:save('${data}')`;
+            }else{
+                let data = 'https://maoapi.vercel.app/qrcode?text='+link;
+                qrimg.src = data;
+                document.querySelector(".popbtn a").href = `javascript:save('${data}')`;
+            }
+        }
+        function closepop(){popdiv.style.display = 'none';qrimg.src=''}
+        function save(link){
+            fetch(link).then(re=>re.blob()).then(a=>{
+                let url = URL.createObjectURL(a);
+                let atag = document.createElement('a');
+                atag.href = url;
+                atag.download = Math.floor(Math.random()*1000)+'.png';
+                document.body.appendChild(atag);
+                atag.click();
+                closepop();
+                return
+            })
+        }
+        function clearatagactive(){
+            let allatag = document.querySelectorAll('.linkbtn');
+            allatag.forEach((item)=>{
+                item.classList.remove('active');
+            })
+        }
+        function showall(){
+            clearatagactive();
+            allbtn.classList.add('active');
+            maingriddiv.style.display = 'flex';
+            forsocial.style.display = 'none';
+            forinfo.style.display = 'none';
+            forfollower.style.display = 'none';
+        }
+        function showpost(){
+            clearatagactive();
+            postbtn.classList.add('active');
+            maingriddiv.style.display = 'flex';
+            forsocial.style.display = 'none';
+            forinfo.style.display = 'none';
+            forfollower.style.display = 'none';
+        }
+        function showinfo(){
+            clearatagactive();
+            infobtn.classList.add('active');
+            maingriddiv.style.display = 'none';
+            forsocial.style.display = 'none';
+            forinfo.style.display = 'block';
+            forfollower.style.display = 'none';
+        }
+        function showfollower(){
+            clearatagactive();
+            followerbtn.classList.add('active');
+            forsocial.style.display = 'none';
+            forfollower.style.display = 'block';
+            maingriddiv.style.display = 'none';
+            forinfo.style.display = 'none';
+        }
+        function showsocial(){
+            clearatagactive();
+            socialbtn.classList.add('active');
+            forsocial.style.display = 'block';
+            forinfo.style.display = 'none';
+            maingriddiv.style.display = 'none';
+            forfollower.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

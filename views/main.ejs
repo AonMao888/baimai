@@ -26,19 +26,19 @@
             <a href=""><ion-icon name="download-outline"></ion-icon><p>Download</p></a>
             <a href=""><ion-icon name="notifications-outline"></ion-icon><p>Alerts</p></a>
             <a href="../settings"><ion-icon name="settings-outline"></ion-icon><p>Settings</p></a>
-            <a href=""><ion-icon name="person-circle-outline"></ion-icon><p>Profile</p></a>
+            <a href="profile/<%=data.me[0].uid%>"><ion-icon name="person-circle-outline"></ion-icon><p>Profile</p></a>
         </div>
     </nav>
     <div class="div">
         <div class="menu">
-            <a href="https://baimai.vercel.app" class="active"><ion-icon name="home-outline"></ion-icon><p>Home</p></a>
+            <a href="../../" class="active"><ion-icon name="home-outline"></ion-icon><p>Home</p></a>
             <a href="../../upload"><ion-icon name="camera-outline"></ion-icon></a>
             <a href=""><ion-icon name="scan-outline"></ion-icon></a>
             <a href=""><ion-icon name="images-outline"></ion-icon><p>My Posts</p></a>
             <a href=""><ion-icon name="people-outline"></ion-icon><p>Friends</p></a>
             <a href=""><ion-icon name="bookmarks-outline"></ion-icon><p>Saved</p></a>
             <hr>
-            <a href=""><ion-icon name="flash-outline"></ion-icon><p>Live</p></a>
+            <a href=""><ion-icon name="videocam-outline"></ion-icon><p>Live</p></a>
             <a href=""><ion-icon name="game-controller-outline"></ion-icon><p>Games</p></a>
             <a href=""><ion-icon name="musical-notes-outline"></ion-icon><p>Music</p></a>
             <a href=""><ion-icon name="bus-outline"></ion-icon><p>Travel</p></a>
@@ -49,7 +49,7 @@
             <a href=""><ion-icon name="newspaper-outline"></ion-icon><p>Terms & conditions</p></a>
             <a href=""><ion-icon name="warning-outline"></ion-icon><p>Privacy & Policy</p></a>
         </div>
-        <%- include(component,{data:data})-%>
+        <%- include(component,{data:data,db:db})-%>
     </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

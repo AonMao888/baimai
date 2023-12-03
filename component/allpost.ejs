@@ -1,13 +1,14 @@
 <div class="list">
-    <% data.forEach((item)=>{%>
+    <% data.posts.forEach((item)=>{
+        let pid = item.poster_id;
+        %>
             <div class="item">
-                <%- include('../component/homepostimg.ejs',{list:item.img}) -%>
                 <div class="content">
                     <a href="" class="poster">
                         <img src="<%=item.poster_img%>" alt="">
                         <div class="name">
                             <h2><%=item.poster_name%></h2>
-                            <p><ion-icon name="stopwatch-outline"></ion-icon> <%=item.date%></p>
+                            <p><ion-icon name="stopwatch-outline"></ion-icon> <%=item.time%> <%=item.date%></p>
                         </div>
                     </a>
                     <div class="des">

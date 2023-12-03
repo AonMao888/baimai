@@ -19,12 +19,16 @@
         </div>
         <div class="right">
             <h1>Account Settings</h1>
-            <div class="accinfo">
-                <p>Name</p>
-                <span><%=data.user.user_metadata.name%></span>
-                <p>Email</p>
-                <span><%=data.user.email%></span>
-            </div><hr>
+            <div class="accinfodiv">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
+                <div class="accinfo">
+                    <p>Name</p>
+                    <span><%=data.user.user_metadata.name%></span>
+                    <p>Email</p>
+                    <span><%=data.user.email%></span>
+                </div>
+            </div>
+            <hr>
             <h2>Reset</h2>
             <p>If you forget or miss some of account settings.</p>
             <a href=""><ion-icon name="create-outline"></ion-icon><p>Edit name</p></a>
